@@ -10,6 +10,5 @@ do
     cd $VAR
     touch $VAR.txt
     cd ..
+    chmod -R 700 $VAR
 done
-
-chmod -R 700 Folder1
