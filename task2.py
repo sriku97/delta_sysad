@@ -1,6 +1,5 @@
 #!/usr/bin/python
 #MySQLdb must be installed for the script to work
-#this script must be run as a root user
 import os
 import sys
 import subprocess
@@ -33,5 +32,6 @@ db.commit()
 os.chmod("script1.py",0700)
 os.chmod("script2.py",0700)
 subprocess.Popen(['python','script1.py'])
-cronfile=open("/var/spool/cron/crontabs/"+getpass.getuser(),"w")
-cronfile.write("*/10 * * * * "+sys.argv[1]+"/script2.py")
+cronf=open("cronfile.txt","w")
+cronf.write("*/10 * * * * "+sys.argv[1]+"/script2.py\n")
+subprocess.Popen(["crontab","cronfile.txt"])
